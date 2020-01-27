@@ -137,23 +137,16 @@ android {
         store {
             dependencies {
                 //DEBUG BUILD TYPE
-                debugImplementation project(':extensions:hockeyapp')
                 debugImplementation project(':extensions:analytics')
                 debugImplementation project(':extensions:tools')
 
 
-                storeImplementation project(':extensions:samsung')
                 storeImplementation project(':extensions:scansnap')
                 storeImplementation project(':extensions:analytics')
             }
         }
 
-        //MOBILE IRON FLAVOR
-        mobileiron {
-            dependencies {
-                mobileironCompile project(':mdm:mobileiron')
-            }
-        }
+
     }
 
     packagingOptions {
