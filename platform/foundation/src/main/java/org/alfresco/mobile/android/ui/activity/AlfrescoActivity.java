@@ -28,7 +28,6 @@ import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
 import org.alfresco.mobile.android.platform.accounts.AlfrescoAccountManager;
 import org.alfresco.mobile.android.platform.extensions.AnalyticsHelper;
 import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
-import org.alfresco.mobile.android.platform.extensions.HockeyAppManager;
 import org.alfresco.mobile.android.platform.intent.PrivateIntent;
 import org.alfresco.mobile.android.ui.fragments.WaitingDialogFragment;
 import org.alfresco.mobile.android.ui.operation.OperationWaitingDialogFragment;
@@ -91,11 +90,6 @@ public abstract class AlfrescoActivity extends AppCompatActivity
         filters.addAction(PrivateIntent.ACTION_DISPLAY_ERROR);
         broadcastManager.registerReceiver(utilsReceiver, filters);
 
-        // HockeyApp
-        if (HockeyAppManager.getInstance(this) != null)
-        {
-            HockeyAppManager.getInstance(this).checkForUpdates(this);
-        }
     }
 
     @Override
@@ -117,12 +111,6 @@ public abstract class AlfrescoActivity extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
-
-        // HockeyApp
-        if (HockeyAppManager.getInstance(this) != null)
-        {
-            HockeyAppManager.getInstance(this).checkForCrashes(this);
-        }
     }
 
     @Override

@@ -28,6 +28,7 @@ import org.alfresco.mobile.android.api.model.Node;
 import org.alfresco.mobile.android.api.services.ServiceRegistry;
 import org.alfresco.mobile.android.api.services.impl.AlfrescoServiceRegistry;
 import org.alfresco.mobile.android.api.session.CloudSession;
+import org.alfresco.mobile.android.appcenter.analytics.AppCenterAnalyticsManagerImpl;
 import org.alfresco.mobile.android.application.R;
 import org.alfresco.mobile.android.application.capture.DeviceCapture;
 import org.alfresco.mobile.android.application.configuration.ConfigurationConstant;
@@ -124,6 +125,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import static org.alfresco.mobile.android.appcenter.analytics.AppCenterAnalyticsManagerImpl.createAppCenterAnalyticsManagerImpl;
+
 /**
  * Main activity of the application.
  *
@@ -170,6 +173,9 @@ public class MainActivity extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        createAppCenterAnalyticsManagerImpl(getApplication(),
+                getText(R.string.hockeyapp_key).toString());
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         super.onCreate(savedInstanceState);

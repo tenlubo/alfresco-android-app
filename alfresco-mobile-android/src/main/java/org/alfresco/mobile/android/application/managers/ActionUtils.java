@@ -28,7 +28,6 @@ import org.alfresco.mobile.android.application.R;
 import org.alfresco.mobile.android.application.activity.PublicDispatcherActivity;
 import org.alfresco.mobile.android.application.editors.text.TextEditorActivity;
 import org.alfresco.mobile.android.platform.AlfrescoNotificationManager;
-import org.alfresco.mobile.android.platform.extensions.SamsungManager;
 import org.alfresco.mobile.android.platform.intent.BaseActionUtils;
 import org.alfresco.mobile.android.platform.mimetype.MimeTypeManager;
 import org.alfresco.mobile.android.platform.security.DataProtectionManager;
@@ -175,13 +174,7 @@ public class ActionUtils extends BaseActionUtils
         try
         {
             String mimeType = MimeTypeManager.getInstance(fr.getActivity()).getMIMEType(myFile.getName());
-            if (SamsungManager.getInstance(fr.getActivity()) != null
-                    && SamsungManager.getInstance(fr.getActivity()).hasPenEnable()
-                    && (mimeType == null || mimeType.equals("application/octet-stream"))
-                    && MimeTypeManager.getExtension(myFile.getName()).equals(SamsungManager.SAMSUNG_NOTE_EXTENSION_SPD))
-            {
-                mimeType = SamsungManager.SAMSUNG_NOTE_MIMETYPE;
-            }
+
             if (DataProtectionManager.getInstance(fr.getActivity()).isEncrypted(myFile.getPath()))
             {
                 WaitingDialogFragment dialog = WaitingDialogFragment.newInstance(R.string.data_protection,
@@ -262,12 +255,7 @@ public class ActionUtils extends BaseActionUtils
         try
         {
             String mimeType = MimeTypeManager.getInstance(activity).getMIMEType(myFile.getName());
-            if (SamsungManager.getInstance(activity) != null && SamsungManager.getInstance(activity).hasPenEnable()
-                    && (mimeType == null || mimeType.equals("application/octet-stream"))
-                    && MimeTypeManager.getExtension(myFile.getName()).equals(SamsungManager.SAMSUNG_NOTE_EXTENSION_SPD))
-            {
-                mimeType = SamsungManager.SAMSUNG_NOTE_MIMETYPE;
-            }
+
             if (DataProtectionManager.getInstance(activity).isEncrypted(myFile.getPath()))
             {
                 WaitingDialogFragment dialog = WaitingDialogFragment.newInstance(R.string.data_protection,

@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.alfresco.mobile.android.platform.EventBusManager;
 import org.alfresco.mobile.android.platform.Manager;
-import org.alfresco.mobile.android.platform.extensions.MobileIronManager;
 import org.alfresco.mobile.android.platform.utils.AndroidVersion;
 import org.alfresco.mobile.android.platform.utils.BundleUtils;
 
@@ -51,7 +50,6 @@ public class MDMManager extends Manager implements MDMConstants
     // ///////////////////////////////////////////////////////////////////////////
     // CONSTANTS
     // ///////////////////////////////////////////////////////////////////////////
-    protected MobileIronManager mobileIronManager;
 
     protected RestrictionsManager restrictionsManager;
 
@@ -83,9 +81,6 @@ public class MDMManager extends Manager implements MDMConstants
     // ///////////////////////////////////////////////////////////////////////////
     public boolean hasConfig()
     {
-        // MobileIron enforce some configuration
-        if (mobileIronManager != null) { return true; }
-
         // Android for Work doesn't enforce configuration
         return (restrictions != null && !restrictions.isEmpty());
     }
@@ -94,13 +89,7 @@ public class MDMManager extends Manager implements MDMConstants
     public void requestConfig(FragmentActivity activity, String applicationId)
     {
         // Which Provider ?
-        if (MobileIronManager.getInstance(activity) != null)
-        {
-            // MobileIron Build
-            mobileIronManager = MobileIronManager.getInstance(activity);
-            mobileIronManager.requestConfig(activity, applicationId);
-        }
-        else if (AndroidVersion.isLollipopOrAbove())
+        if (AndroidVersion.isLollipopOrAbove())
         {
             // Android For Work
             restrictionsManager = (RestrictionsManager) activity.getSystemService(Context.RESTRICTIONS_SERVICE);
@@ -146,11 +135,7 @@ public class MDMManager extends Manager implements MDMConstants
     public void setConfig(Bundle b)
     {
         if (b == null) { return; }
-        if (mobileIronManager != null)
-        {
-            mobileIronManager.setConfig(b);
-        }
-        else if (restrictions != null)
+        if (restrictions != null)
         {
             BundleUtils.addIfNotEmpty(restrictions, b);
         }
@@ -158,11 +143,7 @@ public class MDMManager extends Manager implements MDMConstants
 
     public String getConfig(String id)
     {
-        if (mobileIronManager != null)
-        {
-            return (String) mobileIronManager.getConfig(id);
-        }
-        else if (restrictions != null)
+        if (restrictions != null)
         {
             return restrictions.getString(id);
         }

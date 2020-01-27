@@ -39,4 +39,8 @@ android {
 dependencies {
     api 'com.google.android.gms:play-services-analytics:8.3.0'
     api project(':platform:foundation')
+
+    def appCenterSdkVersion = '2.5.1'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 }
