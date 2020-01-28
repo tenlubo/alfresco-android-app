@@ -17,11 +17,23 @@
  */
 package org.alfresco.mobile.android.application.managers;
 
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.OkHttpDownloader;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso.Builder;
 
 import org.alfresco.mobile.android.api.constants.OnPremiseConstant;
 import org.alfresco.mobile.android.api.services.DocumentFolderService;
@@ -40,23 +52,11 @@ import org.alfresco.mobile.android.ui.rendition.RenditionManager;
 import org.alfresco.mobile.android.ui.rendition.RenditionRequest;
 import org.apache.chemistry.opencmis.commons.impl.UrlBuilder;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.OkHttpDownloader;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Picasso.Builder;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import it.sephiroth.android.library.imagezoom.ImageViewTouch;
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase.DisplayType;
@@ -522,18 +522,7 @@ public class RenditionManagerImpl extends RenditionManager
             picasso.shutdown();
         }
 
-        OkHttpClient client = null;
-        // Specific to detect if OKhttp is used
-        try
-        {
-            Class.forName("org.alfresco.mobile.android.platform.network.MobileIronHttpInvoker");
-            // OKhttp compatible with MobileIron ?
-            client = new OkHttpClient();
-        }
-        catch (ClassNotFoundException e)
-        {
-            client = NetworkSingleton.getInstance().getHttpClient().clone();
-        }
+        OkHttpClient client =  NetworkSingleton.getInstance().getHttpClient().clone();
         ImageDownloader imageLoader = new ImageDownloader(client, alfrescoSession);
         Builder builder = new Builder(appContext);
         picasso = builder.downloader(imageLoader).build();
