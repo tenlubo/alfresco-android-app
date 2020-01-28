@@ -458,15 +458,7 @@
             android:name="android.content.APP_RESTRICTIONS"
             android:resource="@xml/app_restrictions" />
 
-        <!-- *************************************************************** -->
-        <!-- DEPRECATED -->
-        <!-- *************************************************************** -->
-        <!-- Accounts are managed by Android AccountManager. -->
-        <!-- Still available for migration from older version. (version <1.5) -->
-        <provider
-            android:name="org.alfresco.mobile.android.application.providers.AccountProviderImpl"
-            android:authorities="${PROVIDER_AUTHORITY}.accounts"
-            android:exported="false" />
+
     </application>
 
 </manifest>

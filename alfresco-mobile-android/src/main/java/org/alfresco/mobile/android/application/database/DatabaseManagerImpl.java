@@ -17,16 +17,15 @@
  *******************************************************************************/
 package org.alfresco.mobile.android.application.database;
 
-import org.alfresco.mobile.android.accounts.AccountSchema;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import org.alfresco.mobile.android.application.providers.search.HistorySearchSchema;
 import org.alfresco.mobile.android.async.OperationSchema;
 import org.alfresco.mobile.android.platform.database.DatabaseManager;
 import org.alfresco.mobile.android.platform.favorite.FavoritesSchema;
 import org.alfresco.mobile.android.platform.mimetype.MimeTypeSchema;
 import org.alfresco.mobile.android.sync.SyncContentSchema;
-
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 /**
  * @author Jean Marie Pascal
@@ -64,7 +63,6 @@ public class DatabaseManagerImpl extends DatabaseManager
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        AccountSchema.onUpgrade(ctx, db, oldVersion, newVersion);
         SyncContentSchema.onUpgrade(ctx, db, oldVersion, newVersion);
         HistorySearchSchema.onUpgrade(ctx, db, oldVersion, newVersion);
         MimeTypeSchema.onUpgrade(ctx, db, oldVersion, newVersion);
