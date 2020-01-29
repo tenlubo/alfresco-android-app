@@ -17,12 +17,12 @@
  */
 package org.alfresco.mobile.android.application;
 
+import androidx.multidex.MultiDexApplication;
+
 import org.alfresco.mobile.android.application.managers.upgrade.UpgradeManager;
 import org.alfresco.mobile.android.async.OperationsUtils;
 import org.alfresco.mobile.android.platform.SessionManager;
 import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
-
-import android.support.multidex.MultiDexApplication;
 
 public class AlfrescoApplication extends MultiDexApplication
 {

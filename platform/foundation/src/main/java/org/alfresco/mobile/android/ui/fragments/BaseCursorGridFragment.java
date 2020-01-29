@@ -22,8 +22,8 @@ import org.alfresco.mobile.android.platform.utils.AccessibilityUtils;
 
 import android.annotation.TargetApi;
 import android.database.Cursor;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
+import androidx.loader.app.LoaderManager.LoaderCallbacks;
+import androidx.loader.content.Loader;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;

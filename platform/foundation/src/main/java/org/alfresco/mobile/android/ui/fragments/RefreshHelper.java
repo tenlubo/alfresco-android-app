@@ -23,9 +23,9 @@ import org.alfresco.mobile.android.foundation.R;
 import org.alfresco.mobile.android.platform.utils.AccessibilityUtils;
 import org.alfresco.mobile.android.ui.RefreshFragment;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import androidx.fragment.app.FragmentActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.View;
 
 public class RefreshHelper implements OnRefreshListener

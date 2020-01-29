@@ -17,6 +17,13 @@
  ******************************************************************************/
 package org.alfresco.mobile.android.application.managers;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.fragment.app.FragmentActivity;
+
 import org.alfresco.mobile.android.application.R;
 import org.alfresco.mobile.android.application.extension.analytics.GAnalyticsManagerImpl;
 import org.alfresco.mobile.android.application.fragments.config.ConfigMenuEditorFragment;
@@ -25,12 +32,6 @@ import org.alfresco.mobile.android.platform.extensions.DevToolsManager;
 import org.alfresco.mobile.android.ui.holder.HolderUtils;
 import org.alfresco.mobile.android.ui.holder.TwoLinesCheckboxViewHolder;
 import org.alfresco.mobile.android.ui.holder.TwoLinesViewHolder;
-
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class DevToolsManagerImpl extends DevToolsManager
 {
