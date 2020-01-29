@@ -18,6 +18,8 @@
 
 apply plugin: 'com.android.application'
 
+ apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.3"
@@ -161,4 +163,10 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.5'
     implementation 'androidx.multidex:multidex:2.0.0'
     api project(':platform:foundation')
+
+    def appCenterSdkVersion = '2.5.1'
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }

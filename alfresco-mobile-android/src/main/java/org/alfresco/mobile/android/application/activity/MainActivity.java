@@ -17,10 +17,44 @@
  *******************************************************************************/
 package org.alfresco.mobile.android.application.activity;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SyncInfo;
+import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.Html;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.material.snackbar.Snackbar;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+import com.squareup.otto.Subscribe;
 
 import org.alfresco.mobile.android.api.constants.OnPremiseConstant;
 import org.alfresco.mobile.android.api.model.Folder;
@@ -87,42 +121,10 @@ import org.alfresco.mobile.android.ui.fragments.AlfrescoFragment;
 import org.alfresco.mobile.android.ui.node.browse.NodeBrowserTemplate;
 import org.alfresco.mobile.android.ui.utils.UIUtils;
 
-import com.afollestad.materialdialogs.DialogAction;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.squareup.otto.Subscribe;
-
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import android.annotation.TargetApi;
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SyncInfo;
-import android.content.res.Configuration;
-import android.net.ConnectivityManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.annotation.NonNull;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import static org.alfresco.mobile.android.appcenter.analytics.AppCenterAnalyticsManagerImpl.createAppCenterAnalyticsManagerImpl;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Main activity of the application.
@@ -170,8 +172,9 @@ public class MainActivity extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        createAppCenterAnalyticsManagerImpl(getApplication(),
-                getText(R.string.hockeyapp_key).toString());
+
+        AppCenter.start(getApplication(), getText(R.string.hockeyapp_key).toString(),
+                Analytics.class, Crashes.class);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
