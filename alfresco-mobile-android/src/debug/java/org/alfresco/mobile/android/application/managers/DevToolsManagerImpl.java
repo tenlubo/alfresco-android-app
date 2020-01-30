@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.FragmentActivity;
 
 import org.alfresco.mobile.android.application.R;
+import org.alfresco.mobile.android.application.firebase.GAnalyticsManagerImpl;
 import org.alfresco.mobile.android.application.fragments.config.ConfigMenuEditorFragment;
 import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
 import org.alfresco.mobile.android.platform.extensions.DevToolsManager;
@@ -94,8 +95,8 @@ public class DevToolsManagerImpl extends DevToolsManager
                 enableManualDispatch = cvh.choose.isChecked();
                 if (AnalyticsManager.getInstance(activity) != null)
                 {
-//                    ((GAnalyticsManagerImpl) AnalyticsManager.getInstance(activity))
-//                            .enableManualDispatch(cvh.choose.isChecked());
+                    ((GAnalyticsManagerImpl) AnalyticsManager.getInstance(activity))
+                            .enableManualDispatch(cvh.choose.isChecked());
                 }
             }
         });

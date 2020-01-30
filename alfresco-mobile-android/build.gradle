@@ -139,12 +139,9 @@ android {
         store {
             dependencies {
                 //DEBUG BUILD TYPE
-                debugImplementation project(':extensions:analytics')
                 debugImplementation project(':extensions:tools')
 
-
                 storeImplementation project(':extensions:scansnap')
-                storeImplementation project(':extensions:analytics')
             }
         }
 
@@ -161,7 +158,7 @@ android {
 dependencies {
     //COMMON TO ALL VARIANTS
     api 'com.google.code.gson:gson:2.8.5'
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     api project(':platform:foundation')
 
     def appCenterSdkVersion = '2.5.1'
@@ -169,4 +166,7 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+
+    // remove and use firebase
+    api 'com.google.android.gms:play-services-analytics:17.0.0'
 }

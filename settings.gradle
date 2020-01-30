@@ -23,4 +23,4 @@
 // EXTENSIONS
 
 // MDM INTEGRATION
-include ':alfresco-mobile-android', ':extensions', ':platform:foundation', ':platform',  ':extensions:scansnap', ':platform:thirdparty', 'extensions:analytics', ':extensions:tools'
+include ':alfresco-mobile-android', ':extensions', ':platform:foundation', ':platform',  ':extensions:scansnap', ':platform:thirdparty', ':extensions:tools'

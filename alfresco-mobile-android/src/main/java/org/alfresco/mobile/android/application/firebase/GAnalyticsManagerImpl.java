@@ -15,13 +15,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.alfresco.mobile.android.application.extension.analytics;
-
-import java.util.List;
-
-import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
-import org.alfresco.mobile.android.platform.accounts.AlfrescoAccountManager;
-import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
+package org.alfresco.mobile.android.application.firebase;
 
 import android.app.Activity;
 import android.content.Context;
@@ -32,6 +26,12 @@ import android.util.SparseArray;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+
+import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
+import org.alfresco.mobile.android.platform.accounts.AlfrescoAccountManager;
+import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
+
+import java.util.List;
 
 public class GAnalyticsManagerImpl extends AnalyticsManager
 {
@@ -68,13 +68,13 @@ public class GAnalyticsManagerImpl extends AnalyticsManager
         super(context);
         analytics = GoogleAnalytics.getInstance(context);
         // Set it via resource to support override mechanism
-        mTracker = analytics.newTracker(context.getString(R.string.ga_trackingId));
-        mTracker.setSampleRate(Double.parseDouble(context.getResources().getString(R.string.ga_sampleFrequency)));
-        mTracker.enableAutoActivityTracking(context.getResources().getBoolean(R.bool.ga_autoActivityTracking));
-        mTracker.enableExceptionReporting(context.getResources().getBoolean(R.bool.ga_reportUncaughtExceptions));
-        mTracker.setSessionTimeout(context.getResources().getInteger(R.integer.ga_sessionTimeout));
+        mTracker = analytics.newTracker(context.getString(org.alfresco.mobile.android.application.R.string.ga_trackingId));
+        mTracker.setSampleRate(Double.parseDouble(context.getResources().getString(org.alfresco.mobile.android.application.R.string.ga_sampleFrequency)));
+        mTracker.enableAutoActivityTracking(context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_autoActivityTracking));
+        mTracker.enableExceptionReporting(context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_reportUncaughtExceptions));
+        mTracker.setSessionTimeout(context.getResources().getInteger(org.alfresco.mobile.android.application.R.integer.ga_sessionTimeout));
 
-        dispatchManually = context.getResources().getBoolean(R.bool.ga_manualDispatch);
+        dispatchManually = context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_manualDispatch);
     }
 
     // ///////////////////////////////////////////////////////////////////////////
