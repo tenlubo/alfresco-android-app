@@ -31,7 +31,7 @@
 
     <!-- Analytics Manager -->
     <bool name="manager_isEnable_AnalyticsManager">true</bool>
-    <string name="manager_AnalyticsManager">org.alfresco.mobile.android.application.firebase.GAnalyticsManagerImpl</string>
+    <string name="manager_AnalyticsManager">org.alfresco.mobile.android.application.firebase.FirebaseAnalyticsManagerImpl</string>
 
     <!-- Rendition Manager -->
     <bool name="manager_isEnable_RenditionManager">false</bool>
