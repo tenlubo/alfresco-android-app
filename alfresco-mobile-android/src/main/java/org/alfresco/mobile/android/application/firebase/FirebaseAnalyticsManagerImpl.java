@@ -42,16 +42,6 @@ public class FirebaseAnalyticsManagerImpl extends AnalyticsManager {
     protected FirebaseAnalyticsManagerImpl(Context context)
     {
         super(context);
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(context);
-        mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
-        // Set it via resource to support override mechanism
-//        mTracker = analytics.newTracker(context.getString(org.alfresco.mobile.android.application.R.string.ga_trackingId));
-//        mTracker.setSampleRate(Double.parseDouble(context.getResources().getString(org.alfresco.mobile.android.application.R.string.ga_sampleFrequency)));
-//        mTracker.enableAutoActivityTracking(context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_autoActivityTracking));
-//        mTracker.enableExceptionReporting(context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_reportUncaughtExceptions));
-//        mTracker.setSessionTimeout(context.getResources().getInteger(org.alfresco.mobile.android.application.R.integer.ga_sessionTimeout));
-//
-//        dispatchManually = context.getResources().getBoolean(org.alfresco.mobile.android.application.R.bool.ga_manualDispatch);
     }
 
 
@@ -59,6 +49,17 @@ public class FirebaseAnalyticsManagerImpl extends AnalyticsManager {
     // ///////////////////////////////////////////////////////////////////////////
     // REPORT
     // ///////////////////////////////////////////////////////////////////////////
+    @Override
+    public void initMainActivity(final Activity activity)
+    {
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity);
+        mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ORIGIN, activity.getLocalClassName());
+        bundle.putString(FirebaseAnalytics.Param.METHOD, "FireBase Analytics Recreated");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+    }
+
     @Override
     public void startReport(final Activity activity)
     {

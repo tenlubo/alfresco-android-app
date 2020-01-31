@@ -172,6 +172,10 @@ public class MainActivity extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        if (AnalyticsManager.getInstance(this) != null && AnalyticsManager.getInstance(this).isEnable())
+        {
+            AnalyticsManager.getInstance(this).initMainActivity(this);
+        }
 
         AppCenter.start(getApplication(), getText(R.string.hockeyapp_key).toString(),
                 Analytics.class, Crashes.class);

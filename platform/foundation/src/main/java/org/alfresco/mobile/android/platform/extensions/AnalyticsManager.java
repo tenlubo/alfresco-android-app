@@ -17,12 +17,12 @@
  */
 package org.alfresco.mobile.android.platform.extensions;
 
-import org.alfresco.mobile.android.platform.Manager;
-import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.SparseArray;
+
+import org.alfresco.mobile.android.platform.Manager;
+import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
 
 public abstract class AnalyticsManager extends Manager
 {
@@ -621,6 +621,8 @@ public abstract class AnalyticsManager extends Manager
     // ABSTRACT METHODS
     // ///////////////////////////////////////////////////////////////////////////
     public abstract void startReport(Activity activity);
+
+    public abstract void initMainActivity(Activity activity);
 
     public abstract void reportScreen(String name);
 
