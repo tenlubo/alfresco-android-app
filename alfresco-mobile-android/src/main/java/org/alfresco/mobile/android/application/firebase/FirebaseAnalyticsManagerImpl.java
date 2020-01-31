@@ -57,7 +57,7 @@ public class FirebaseAnalyticsManagerImpl extends AnalyticsManager {
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ORIGIN, activity.getLocalClassName());
         bundle.putString(FirebaseAnalytics.Param.METHOD, "FireBase Analytics Recreated");
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LEVEL_START, bundle);
     }
 
     @Override
@@ -268,12 +268,5 @@ public class FirebaseAnalyticsManagerImpl extends AnalyticsManager {
         {
             opt(appContext, status, account);
         }
-    }
-
-
-    @Deprecated
-    public void enableManualDispatch(boolean enable)
-    {
-        //dispatchManually = enable;
     }
 }

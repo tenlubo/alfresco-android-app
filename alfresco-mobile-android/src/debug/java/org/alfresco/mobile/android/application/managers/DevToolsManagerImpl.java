@@ -18,24 +18,19 @@
 package org.alfresco.mobile.android.application.managers;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentActivity;
 
 import org.alfresco.mobile.android.application.R;
-import org.alfresco.mobile.android.application.firebase.FirebaseAnalyticsManagerImpl;
 import org.alfresco.mobile.android.application.fragments.config.ConfigMenuEditorFragment;
-import org.alfresco.mobile.android.platform.extensions.AnalyticsManager;
 import org.alfresco.mobile.android.platform.extensions.DevToolsManager;
 import org.alfresco.mobile.android.ui.holder.HolderUtils;
-import org.alfresco.mobile.android.ui.holder.TwoLinesCheckboxViewHolder;
 import org.alfresco.mobile.android.ui.holder.TwoLinesViewHolder;
 
 public class DevToolsManagerImpl extends DevToolsManager
 {
-    public boolean enableManualDispatch = false;
 
     // ///////////////////////////////////////////////////////////////////////////
     // CONSTRUCTOR
@@ -81,25 +76,6 @@ public class DevToolsManagerImpl extends DevToolsManager
                 DevToolsManager.getInstance(activity).displayMenuConfig(activity);
             }
         });
-
-        View v = LayoutInflater.from(root.getContext()).inflate(R.layout.row_two_lines_checkbox, root, false);
-        final TwoLinesCheckboxViewHolder cvh = HolderUtils.configure(v, "Analytics RealTime",
-                "Switch ON to enable faster realtime analytics", enableManualDispatch);
-        root.addView(v);
-
-        cvh.choose.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                enableManualDispatch = cvh.choose.isChecked();
-                if (AnalyticsManager.getInstance(activity) != null)
-                {
-                    ((FirebaseAnalyticsManagerImpl) AnalyticsManager.getInstance(activity))
-                            .enableManualDispatch(cvh.choose.isChecked());
-                }
-            }
-        });
-    }
+   }
 
 }
