@@ -17,8 +17,9 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
- apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -164,5 +165,7 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    // Add the Firebase SDK for Crashlytics.
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
 
 }
