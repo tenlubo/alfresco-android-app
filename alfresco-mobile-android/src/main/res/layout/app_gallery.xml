@@ -18,7 +18,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="?MainTheme.Background.White"
-    tools:context=".MainActivity">
+    tools:context="org.alfresco.mobile.android.application.activity.MainActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

@@ -17,21 +17,20 @@
  *******************************************************************************/
 package org.alfresco.mobile.android.application.activity;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import android.os.Bundle;
+
+import com.google.gson.Gson;
 
 import org.alfresco.mobile.android.api.model.Folder;
-import org.alfresco.mobile.android.api.model.Site;
 import org.alfresco.mobile.android.application.capture.AudioCapture;
 import org.alfresco.mobile.android.application.capture.DeviceCapture;
 import org.alfresco.mobile.android.application.capture.PhotoCapture;
 import org.alfresco.mobile.android.application.capture.VideoCapture;
 import org.alfresco.mobile.android.platform.accounts.AlfrescoAccount;
 
-import android.os.Bundle;
-
-import com.google.gson.Gson;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 public class MainActivityHelper
 {

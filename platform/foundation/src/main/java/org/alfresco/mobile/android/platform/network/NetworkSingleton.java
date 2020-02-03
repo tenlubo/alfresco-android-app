@@ -17,8 +17,6 @@
  *******************************************************************************/
 package org.alfresco.mobile.android.platform.network;
 
-import java.net.URL;
-
 import com.squareup.okhttp.ConnectionPool;
 import com.squareup.okhttp.OkHttpClient;
 

@@ -33,8 +33,13 @@
  ******************************************************************************/
 package org.alfresco.mobile.android.ui.fragments;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.os.Bundle;
+import android.text.Html;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.alfresco.mobile.android.api.model.ListingContext;
 import org.alfresco.mobile.android.api.model.PagingResult;
@@ -45,14 +50,6 @@ import org.alfresco.mobile.android.foundation.R;
 import org.alfresco.mobile.android.platform.utils.AccessibilityUtils;
 import org.alfresco.mobile.android.platform.utils.ConnectivityUtils;
 
-import android.annotation.TargetApi;
-import android.os.Bundle;
-import android.text.Html;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -62,9 +59,6 @@ public abstract class BaseGridFragment extends CommonGridFragment
     public static final String TAG = BaseGridFragment.class.getName();
 
     protected String requestId;
-
-    @SuppressWarnings("rawtypes")
-    protected List<Object> selectedItem = new ArrayList<Object>(1);
 
     // /////////////////////////////////////////////////////////////
     // LIFECYCLE
