@@ -51,9 +51,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.material.snackbar.Snackbar;
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
 import com.squareup.otto.Subscribe;
 
 import org.alfresco.mobile.android.api.constants.OnPremiseConstant;
@@ -176,9 +173,6 @@ public class MainActivity extends BaseActivity
         {
             AnalyticsManager.getInstance(this).initMainActivity(this);
         }
-
-        AppCenter.start(getApplication(), getText(R.string.hockeyapp_key).toString(),
-                Analytics.class, Crashes.class);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
