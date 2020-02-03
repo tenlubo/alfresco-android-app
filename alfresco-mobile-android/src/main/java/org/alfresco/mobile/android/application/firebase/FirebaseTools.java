@@ -5,8 +5,12 @@ import android.util.SparseArray;
 public class FirebaseTools {
 
     public static final String toString(final SparseArray<?> pSparseArray) {
-        final StringBuilder stringBuilder = new StringBuilder();
 
+        if(pSparseArray == null) {
+            return "";
+        }
+
+        final StringBuilder stringBuilder = new StringBuilder();
         final int size = pSparseArray.size();
         stringBuilder.append("{");
         for (int i = 0; i < size; i++) {
