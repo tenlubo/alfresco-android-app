@@ -10,7 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.ImageView;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 import it.sephiroth.android.library.easing.Cubic;
 import it.sephiroth.android.library.easing.Easing;
@@ -22,7 +23,7 @@ import it.sephiroth.android.library.imagezoom.utils.IDisposable;
  * 
  * @author alessandro
  */
-public abstract class ImageViewTouchBase extends ImageView implements IDisposable
+public abstract class ImageViewTouchBase extends AppCompatImageView implements IDisposable
 {
 
     public static final String VERSION = "1.0.3";

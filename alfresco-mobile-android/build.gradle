@@ -24,16 +24,17 @@ apply plugin: 'com.google.firebase.firebase-perf'
 
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
 
     flavorDimensions "default"
 
     defaultConfig {
         applicationId APPLICATION_ID
 
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 88
         multiDexEnabled true
 
@@ -87,8 +88,8 @@ android {
 
         release {
             signingConfig signingConfigs.release
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true
+            minifyEnabled true
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def task = project.tasks.create("copy${variant.name.capitalize()}Apk", Copy)
