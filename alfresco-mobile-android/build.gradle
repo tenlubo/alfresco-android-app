@@ -83,8 +83,6 @@ android {
             resValue "string", "account_name", ACCOUNT_ID_DEBUG
             resValue "string", "sync_adapter", SYNC_ADAPTER_DEBUG
             resValue "string", "favorites_adapter", FAVORITES_ADAPTER_DEBUG
-
-            resValue "string", "hockeyapp_key", HOCKEYAPP_KEY
         }
 
         release {
